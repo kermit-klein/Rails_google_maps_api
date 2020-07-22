@@ -5,4 +5,8 @@ window.initMap = function (lat, lng) {
     zoom: 14,
   };
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  var marker = new google.maps.Marker({
+    position: myCoords,
+    map: map,
+  });
 };
