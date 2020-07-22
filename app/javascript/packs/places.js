@@ -1,12 +1,30 @@
 window.initMap = function (lat, lng) {
-  var myCoords = new google.maps.LatLng(lat, lng);
-  var mapOptions = {
+  let myCoords = new google.maps.LatLng(lat, lng);
+  let mapOptions = {
     center: myCoords,
     zoom: 14,
   };
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var marker = new google.maps.Marker({
+  let map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  let marker = new google.maps.Marker({
     position: myCoords,
     map: map,
+  });
+};
+
+window.initMapMoveMark = function () {
+  let lat = document.getElementById("place_latitude").value;
+  let lng = document.getElementById("place_longitude").value;
+
+  let myCoords = new google.maps.LatLng(lat, lng);
+  let mapOptions = {
+    center: myCoords,
+    zoom: 14,
+  };
+  let map = new google.maps.Map(document.getElementById("map2"), mapOptions);
+  let marker = new google.maps.Marker({
+    position: myCoords,
+    animation: google.maps.Animation.DROP,
+    map: map,
+    draggable: true,
   });
 };
