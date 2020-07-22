@@ -1,3 +1,9 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("turbolinks:load", initMapMoveMark);
+    </script>
+<% end %>
+
 <%= form_with(model: place, local: true) do |form| %>
   <% if place.errors.any? %>
     <div id="error_explanation">
@@ -25,6 +31,10 @@
     <%= form.label :longitude %>
     <%= form.text_field :longitude %>
   </div>
+
+  <p>
+    <div id="map2"></div>
+  </p>
 
   <div class="actions">
     <%= form.submit %>
