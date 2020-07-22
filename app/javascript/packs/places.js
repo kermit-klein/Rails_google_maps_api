@@ -6,5 +6,3 @@ window.initMap = function (lat, lng) {
   };
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 };
-
-console.log("ADDED");
