@@ -21,10 +21,18 @@ window.initMapMoveMark = function () {
     zoom: 14,
   };
   let map = new google.maps.Map(document.getElementById("map2"), mapOptions);
+  const toggleBounce = () => {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  };
   let marker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
     map: map,
     draggable: true,
   });
+  marker.addListener("click", toggleBounce);
 };
