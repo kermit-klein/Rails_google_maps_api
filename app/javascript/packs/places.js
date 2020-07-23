@@ -35,4 +35,14 @@ window.initMapMoveMark = function () {
     draggable: true,
   });
   marker.addListener("click", toggleBounce);
+  marker.addListener("drag", () => {
+    let latlng = marker.getPosition();
+    let newlat = Math.round(latlng.lat() * 1000000) / 1000000;
+    let newlng = Math.round(latlng.lng() * 1000000) / 1000000;
+    document.getElementById("place_latitude").value = newlat;
+    document.getElementById("place_longitude").value = newlng;
+  });
+  marker.addListener("dragend", () => {
+    map.panTo(marker.getPosition());
+  });
 };
