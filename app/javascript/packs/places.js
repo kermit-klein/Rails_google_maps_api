@@ -28,6 +28,7 @@ window.initMapMoveMark = function () {
     zoom: 14,
   };
   let map = new google.maps.Map(document.getElementById("map2"), mapOptions);
+
   const toggleBounce = () => {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
@@ -35,6 +36,7 @@ window.initMapMoveMark = function () {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
   };
+
   let marker = new google.maps.Marker({
     position: myCoords,
     animation: google.maps.Animation.DROP,
@@ -42,6 +44,18 @@ window.initMapMoveMark = function () {
     draggable: true,
   });
   marker.addListener("click", toggleBounce);
+
+  const refreshMarker = () => {
+    let lat = document.getElementById("place_latitude").value;
+    let lng = document.getElementById("place_longitude").value;
+    let myCoords = new google.maps.LatLng(lat, lng);
+    marker.setPosition(myCoords);
+    map.setCenter(marker.getPosition());
+  };
+
+  document.getElementById("place_latitude").onchange = refreshMarker;
+  document.getElementById("place_longitude").onchange = refreshMarker;
+
   marker.addListener("drag", () => {
     let latlng = marker.getPosition();
     let newlat = Math.round(latlng.lat() * 1000000) / 1000000;
