@@ -15,6 +15,13 @@ window.initMapMoveMark = function () {
   let lat = document.getElementById("place_latitude").value;
   let lng = document.getElementById("place_longitude").value;
 
+  if (!lat || !lng) {
+    lat = 59.334591;
+    lng = 18.06324;
+    document.getElementById("place_latitude").value = lat;
+    document.getElementById("place_longitude").value = lng;
+  }
+
   let myCoords = new google.maps.LatLng(lat, lng);
   let mapOptions = {
     center: myCoords,
