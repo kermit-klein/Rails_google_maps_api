@@ -43,6 +43,7 @@ window.initMapMoveMark = function () {
     map: map,
     draggable: true,
   });
+
   marker.addListener("click", toggleBounce);
 
   const refreshMarker = () => {
@@ -63,7 +64,24 @@ window.initMapMoveMark = function () {
     document.getElementById("place_latitude").value = newlat;
     document.getElementById("place_longitude").value = newlng;
   });
+
   marker.addListener("dragend", () => {
     map.panTo(marker.getPosition());
   });
+
+  const refreshPlace = () => {
+    const address = document.getElementById("place_name").value;
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        let myCoords = results[0].geometry.location;
+        marker.setPosition(myCoords);
+        map.setCenter(marker.getPosition());
+      } else {
+        console.log(status);
+      }
+    });
+  };
+
+  document.getElementById("place_name").onchange = refreshPlace;
 };
