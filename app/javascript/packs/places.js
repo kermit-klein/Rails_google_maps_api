@@ -77,6 +77,8 @@ window.initMapMoveMark = function () {
         let myCoords = results[0].geometry.location;
         marker.setPosition(myCoords);
         map.setCenter(marker.getPosition());
+        document.getElementById("place_latitude").value = myCoords.lat();
+        document.getElementById("place_longitude").value = myCoords.lng();
       } else {
         console.log(status);
       }
