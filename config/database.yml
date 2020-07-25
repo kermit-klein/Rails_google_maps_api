@@ -23,4 +23,6 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: google_maps_api
+  database: maps_api_production
+  username: maps_api
+  password: <%= ENV['REQUEST_API_DATABASE_PASSWORD'] %>
