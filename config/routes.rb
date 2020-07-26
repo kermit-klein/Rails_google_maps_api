@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
   resources :places
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  if Rails.env.test?
+    namespace :test do
+      post 'clean_database', to: 'databases#clean_database'
+    end
+  end
 end
