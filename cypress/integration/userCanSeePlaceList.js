@@ -1,4 +1,8 @@
 describe("User can see places list", () => {
+  beforeEach(() => {
+    cy.cleanDatabase();
+  });
+
   it("visits home page", () => {
     cy.visit("localhost:3000/places");
     cy.get("table").contains("Buckingham Palace");

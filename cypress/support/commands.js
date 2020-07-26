@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+import axios from "axios";
+
+Cypress.Commands.add("cleanDatabase", async () => {
+  return await axios.post("http://localhost:3000/test/clean_database", {
+    should_seed: true,
+  });
+});
