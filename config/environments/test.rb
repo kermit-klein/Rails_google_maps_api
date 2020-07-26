@@ -46,4 +46,13 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  if Rails.env.test?
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '/test/*', headers: :any, methods: %i[post]
+      end
+    end
+  end
 end
