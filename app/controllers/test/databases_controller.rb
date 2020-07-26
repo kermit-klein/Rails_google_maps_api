@@ -1,10 +1,11 @@
-class DatabasesController < ApplicationController
+class Test::DatabasesController < ApplicationController
   def clean_database
     tables = ActiveRecord::Base.connection.tables
     tables.delete 'schema.migrations'
-    tables.each { |t| ActiveRecord::Base.connection.execute("TRUNCATE #{t} CASCADE") }
-
-    Rails.application.load_seed unless ['false', false].include?(params['database']['should_seed'])
+    tables.each do |t|
+      ActiveRecord::Base.connection.execute("DELETE FROM #{t}")
+    end
+    Rails.application.load_seed unless ['false', false].include?(params['should_seed'])
 
     render plain: 'Truncated and seeded database'
   end

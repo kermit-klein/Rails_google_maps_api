@@ -1,5 +1,9 @@
 describe("User can see places list", () => {
   beforeEach(() => {
+    cy.cleanAndSeedDatabase();
+  });
+
+  afterEach(() => {
     cy.cleanDatabase();
   });
 
