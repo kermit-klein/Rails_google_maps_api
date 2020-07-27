@@ -4,6 +4,7 @@ class Test::DatabasesController < ApplicationController
     tables.delete 'schema.migrations'
     tables.each do |t|
       ActiveRecord::Base.connection.execute("DELETE FROM #{t}")
+      ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence where name='#{t}'")
     end
     Rails.application.load_seed unless ['false', false].include?(params['should_seed'])
 
