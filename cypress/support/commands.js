@@ -1,4 +1,5 @@
 import axios from "axios";
+import "@4tw/cypress-drag-drop";
 
 Cypress.Commands.add("cleanAndSeedDatabase", async () => {
   return await axios.post("http://localhost:3000/test/clean_database", {
