@@ -12,7 +12,6 @@ describe("User can", () => {
     cy.get("a").contains("New Place").click();
     cy.get("#place_name").type("Ankara");
     cy.get("body").click();
-
     cy.get("#place_latitude").should("have.value", 39.9333635);
     cy.get("#place_longitude").should("have.value", 32.8597419);
     cy.get('input[name="commit"]').click();
