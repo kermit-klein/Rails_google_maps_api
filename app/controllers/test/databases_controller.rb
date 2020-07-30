@@ -7,7 +7,5 @@ class Test::DatabasesController < ApplicationController
       ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence where name='#{t}'")
     end
     Rails.application.load_seed unless ['false', false].include?(params['should_seed'])
-
-    render plain: 'Truncated and seeded database'
   end
 end
