@@ -12,6 +12,8 @@
 
 ## Getting Started
 
+A simple CRUD application for Google Maps Api.
+
 ### Dependencies
 
 ### Setup
