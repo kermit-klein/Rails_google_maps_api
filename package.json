@@ -11,7 +11,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^1.4.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cypress": "^4.11.0",
     "webpack-dev-server": "^3.11.0"
   },
